@@ -1,0 +1,10 @@
+streamlit
+pandas
+folium
+streamlit-folium
+shapely
+fpdf2  # O fpdf, dependiendo de cuál instalaste
+matplotlib
+geopy
+openpyxl # Necesario para generar el Excel
+unicodedata2
