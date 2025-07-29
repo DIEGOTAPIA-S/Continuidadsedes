@@ -376,13 +376,13 @@ def crear_pdf(reporte, tipo_evento, descripcion_emergencia="", sedes_fijas_todas
             
             # Definir anchos de columna para la nueva tabla
             col_alt = 55
-            col_afectada = 55
+            col_cercana = 55
             col_ciudad_alt = 40
             col_dist = 30
             
             # Cabecera de la tabla
             pdf.set_fill_color(200, 220, 255) # Un gris claro para diferenciar
-            pdf.cell(col_afectada, 8, "Sede Afectada", 1, 0, 'C', True)
+            pdf.cell(col_cercana, 8, "Sede Afectada", 1, 0, 'C', True)
             pdf.cell(col_alt, 8, "Sede Alternativa", 1, 0, 'C', True)
             pdf.cell(col_ciudad_alt, 8, "Ciudad", 1, 0, 'C', True)
             pdf.cell(col_dist, 8, "Distancia (km)", 1, 1, 'C', True)
@@ -397,7 +397,7 @@ def crear_pdf(reporte, tipo_evento, descripcion_emergencia="", sedes_fijas_todas
                 distancia = str(row['Distancia (km)'])
                 
                 pdf.cell(col_alt, 8, txt=alternativa, border=1, align='L')
-                pdf.cell(col_cercana, 8, txt=afectada_a, border=1, align='L')
+                pdf.cell(col_cercana, 8, txt=cercana_a, border=1, align='L')
                 pdf.cell(col_ciudad_alt, 8, txt=ciudad, border=1, align='L')
                 pdf.cell(col_dist, 8, txt=distancia, border=1, align='C', ln=1)
         # --- FIN DEL NUEVO CÓDIGO ---
