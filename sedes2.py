@@ -383,7 +383,7 @@ def crear_pdf(reporte, tipo_evento, descripcion_emergencia="", sedes_fijas_todas
             # Cabecera de la tabla
             pdf.set_fill_color(200, 220, 255) # Un gris claro para diferenciar
             pdf.cell(col_alt, 8, "Sede Alternativa", 1, 0, 'C', True)
-            pdf.cell(col_cercana, 8, "Cercana a (Sede Afectada)", 1, 0, 'C', True)
+            pdf.cell(col_cercana, 8, "Cercana a Sede Afectada", 1, 0, 'C', True)
             pdf.cell(col_ciudad_alt, 8, "Ciudad", 1, 0, 'C', True)
             pdf.cell(col_dist, 8, "Distancia (km)", 1, 1, 'C', True)
             
