@@ -8,3 +8,4 @@ matplotlib
 geopy
 openpyxl # Necesario para generar el Excel
 unicodedata2
+pytz
