@@ -560,7 +560,7 @@ if sede_seleccionada:
                 folium.Marker(
                     location=coords,
                     popup=folium.Popup(popup_html_cercanas, max_width=300), # Usamos el nuevo HTML
-                    icon=folium.Icon(color='green', icon='home', prefix='fa')
+                    icon=folium.Icon(color='green', icon='hospital', prefix='fa')
                 ).add_to(m)
                 
 # Visualizar las zonas ya guardadas
