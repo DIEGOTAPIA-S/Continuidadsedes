@@ -14,6 +14,7 @@ import tempfile
 import unicodedata
 import base64
 from io import BytesIO
+import pytz
 
 # --- Configuración de la página ---
 st.set_page_config(
@@ -293,7 +294,10 @@ def crear_pdf(reporte, tipo_evento, descripcion_emergencia="", sedes_fijas_todas
         pdf.set_font("Arial", 'B', 16)
         pdf.cell(0, 10, txt="REPORTE DE EMERGENCIA", ln=1, align='C')
         pdf.set_font("Arial", size=12)
-        pdf.cell(0, 10, txt=f"Fecha: {datetime.now().strftime('%Y-%m-%d %H:%M')}", ln=1)
+        # Obtener la hora actual en la zona horaria de Bogotá
+        bogota_tz = pytz.timezone('America/Bogota')
+        fecha_actual = datetime.now(bogota_tz)
+        pdf.cell(0, 10, txt=f"Fecha: {fecha_actual.strftime('%Y-%m-%d %H:%M')}", ln=1)
         pdf.ln(10)
 
         pdf.set_font("Arial", 'B', 14)
@@ -423,9 +427,11 @@ def generar_excel_reporte(reporte, tipo_evento, descripcion):
     """Genera un archivo Excel con el reporte de sedes afectadas."""
     output = BytesIO()
     with pd.ExcelWriter(output, engine='openpyxl') as writer:
+        bogota_tz = pytz.timezone('America/Bogota')
+        fecha_actual_str = datetime.now(bogota_tz).strftime('%Y-%m-%d %H:%M')
         resumen_data = {
             "Parámetro": ["Tipo de Evento", "Descripción", "Fecha del Reporte", "Total Sedes Afectadas"],
-            "Valor": [tipo_evento, descripcion, datetime.now().strftime('%Y-%m-%d %H:%M'), reporte['total_sedes']]
+            "Valor": [tipo_evento, descripcion, fecha_actual_str, reporte['total_sedes']]
         }
         pd.DataFrame(resumen_data).to_excel(writer, sheet_name='Resumen', index=False)
         
