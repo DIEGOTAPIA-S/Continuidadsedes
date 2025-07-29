@@ -396,8 +396,8 @@ def crear_pdf(reporte, tipo_evento, descripcion_emergencia="", sedes_fijas_todas
                 ciudad = remove_accents(row['Ciudad'])[:25]
                 distancia = str(row['Distancia (km)'])
                 
-                pdf.cell(col_alt, 8, txt=alternativa, border=1, align='L')
                 pdf.cell(col_cercana, 8, txt=cercana_a, border=1, align='L')
+                pdf.cell(col_alt, 8, txt=alternativa, border=1, align='L')
                 pdf.cell(col_ciudad_alt, 8, txt=ciudad, border=1, align='L')
                 pdf.cell(col_dist, 8, txt=distancia, border=1, align='C', ln=1)
         # --- FIN DEL NUEVO CÓDIGO ---
